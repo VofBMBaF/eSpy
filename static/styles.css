@@ -1,0 +1,80 @@
+* 
+{
+    background: #153951 !important;
+
+}
+
+.navbar
+{
+   /*background: #2dd0b2 !important;*/
+    margin-bottom: 50px;
+    justify-content: space-evenly;
+
+}
+
+/* nav
+{
+   /* background: #2dd0b2 !important;
+}
+*/
+
+h1
+{
+    color: #2dd0b2 !important;
+    font-family: Iceland;
+}
+
+h6
+{
+    font-family: Abel;
+    color: #2dd0b2 !important
+}
+
+
+
+.img-container
+{
+    align-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+    padding-top: 40px;
+    box-shadow: 0 0 15px 10px #0c212e6f;
+}
+   
+
+
+.img-container img
+{
+    display:block;
+    margin:auto;
+}
+
+.buttons
+{
+    display: flex;
+    justify-content: center;
+
+    
+}
+
+.buttons button
+{
+    margin: 10px;
+    
+}
+
+.btn-success 
+{
+    background: rgb(0, 128, 77) !important;
+}
+
+.btn-danger
+{
+    background: rgb(116, 20, 31) !important;
+}
+
+.btn-dark
+{
+    background: rgb(28, 41, 42) !important;
+}
