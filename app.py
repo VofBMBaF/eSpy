@@ -11,16 +11,31 @@ recordings_dir = os.path.join('recordings')
 if not os.path.exists(recordings_dir):
     os.makedirs(recordings_dir)
 
+# List of our camera channels
+cameras = [0, 2]
+
+# This function returns the camera with the id of the function's parameter, turned to INT to avoid value errors.
+def find_cameras(list_id):
+    return cameras[int(list_id)]    
+
 # Store video access in variable
-vid = cv2.VideoCapture(0)
-frame_width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
-frame_height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
 isRecording = False
 out = None
 
 
-def gen():
+# Takes an argument for what camera we want to display
+def gen(camera_id):
     # Run forever
+
+    # Takes the argument from the function call
+    cam = find_cameras(camera_id)
+    # Collects stream from specified camera
+    vid = cv2.VideoCapture(cam)
+    # Collects width and height of our stream
+    frame_width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
+    frame_height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
     while True:
         time.sleep(0.1)
 
@@ -45,16 +60,21 @@ def gen():
     
 
 
-@app.route('/video_feed')
-def video_feed():
+@app.route('/video_feed/<string:list_id>/')
+# Takes an id
+def video_feed(list_id):
 
     # Generator function response
-    return Response(gen(),
+    # Passes that id to the gen function so we know what to display to the video feed
+    return Response(gen(list_id),
                     mimetype='multipart/x-mixed-replace; boundary=frame')    
 
 @app.route("/")
 def index():
-    return render_template("videos.html")
+    # camera_list is the amount of cameras we have in the list
+    # camera holds all values from cameras 
+
+    return render_template("videos.html", camera_list = len(cameras), camera = cameras)
 
 @app.route('/start_rec', methods=["POST"])
 def start_recording():
@@ -62,7 +82,7 @@ def start_recording():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     if not isRecording:
-        fourcc = cv2.VideoWriter_fourcc(*'DIVX')
+        fourcc = cv2.VideoWriter_fourcc(*"IYUV")
         out = cv2.VideoWriter(os.path.join(recordings_dir, f'{timestamp}_recording.avi'), fourcc, 20.0, (640, 480))
         isRecording = True
     return '', 203   
