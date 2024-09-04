@@ -17,21 +17,14 @@
 </head>
 <body>
   
-  <!-- Since the generator function's response is stored as a JPEG,
-   we're going to put the URL as an IMG source attribute -->
     <nav class="navbar">
       <div class="container-fluid">
       <h1>eSpy</h1>
       <h6>Local Camera Surveillance</h6>
     </div>
     </nav>
-    <div class="img-container"> 
-      <img src="{{ url_for('video_feed') }}">
-      <div class="buttons">
-      <button type="button" class="btn btn-dark">Motion Detection</button>  
-      <button type="button" class="btn btn-success">Record</button> 
-      <button type="button" class="btn btn-danger">Stop Recording</button>
-    </div>
+    {% block main %}{% endblock %}
+    
   
     
     </div>
