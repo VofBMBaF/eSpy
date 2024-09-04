@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Video Stream
+{% endblock %}
+
+{% block main %}
+
+<!-- All cameras from first index to last in cameras-->
+ {% for camera_number in range(1, camera_list)%}
+    <div class="img-container"> 
+        <!-- List id is the camera number from the for loop-->
+        <img src="{{ url_for('video_feed', list_id = camera_number) }}" width="640" height="480">
+        <div class="buttons">
+        <button type="button" class="btn btn-dark">Motion Detection</button>  
+        <button type="button" onclick="startRecording(this)" class="btn btn-success" id="record">Record</button> 
+        <button type="button" onclick="stopRecording(this)" class="btn btn-danger" id="stop">Stop Recording</button>
+    </div>
+ {%endfor%}   
+
+  <script>
+    function startRecording(elem) 
+    {
+        fetch('/start_rec', {method:"POST"});
+
+    }
+    function stopRecording(elem)
+    {
+        fetch('/stop_rec', {method:"POST"});
+    }    
+   
+
+
+  </script>
+
+  {% endblock %}  
