@@ -59,9 +59,7 @@ def gen(camera_id):
                    b'Content-Type: image/jpeg\r\n\r\n' + bytearray(buffer) + b'\r\n')
     
 
-
 @app.route('/video_feed/<string:list_id>/')
-# Takes an id
 def video_feed(list_id):
 
     # Generator function response
@@ -74,7 +72,7 @@ def index():
     # camera_list is the amount of cameras we have in the list
     # camera holds all values from cameras 
 
-    return render_template("videos.html", camera_list = len(cameras), camera = cameras)
+    return render_template("videos.html", camera_list = len(cameras), cameras = cameras)
 
 @app.route('/start_rec', methods=["POST"])
 def start_recording():
