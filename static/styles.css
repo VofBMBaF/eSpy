@@ -76,5 +76,13 @@ h6
 
 .btn-dark
 {
-    background: rgb(28, 41, 42) !important;
+    background: rgb(112, 151, 154) !important;
+    height: 35px !important;
+}
+
+.top-buttons
+{
+    display: flex;
+    justify-content: center;
+
 }
