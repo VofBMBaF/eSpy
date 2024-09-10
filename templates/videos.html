@@ -7,33 +7,40 @@
 {% block main %}
 
 <!-- All cameras from first index to last in cameras-->
-
+ {% for camera_number in range(0, camera_list)%}
     <div class="img-container"> 
         <!-- List id is the camera number from the for loop-->
-        <img src="{{ url_for('video_feed', id = camera_number) }}" width="640" height="480">
+        <img src="{{ url_for('video_feed', list_id = camera_number) }}" width="640" height="480">
         <div class="buttons">
-        <button type="button" onclick="stop(this)" class="btn btn-dark">Stop</button>  
-        <button type="button" onclick="startRecording(this)" class="btn btn-success" id="record">Record</button> 
-        <button type="button" onclick="stopRecording(this)" class="btn btn-danger" id="stop">Stop Recording</button>
+        <button type="button" onclick="removeCamera('{{camera_number}}')" class="btn btn-dark">Remove</button>  
+        <button type="button" onclick="startRecording('{{ camera_number }}')" class="btn btn-success" id="record">Record</button> 
+        <button type="button" onclick="stopRecording('{{ camera_number }}')" class="btn btn-danger" id="stop">Stop Recording</button>
     </div>
-
+ {%endfor%}   
 
   <script>
-    function startRecording(elem) 
+    // Camera_id argument that we'll process into a camera channel in the python code
+    function startRecording(camera_id) 
     {
-        fetch('/start_rec', {method:"POST"});
+        console.log(`Starting recording for camera ${camera_id}`);
+        // Post request to /start_rec, passing the value of camera_id into the url. We'll collect that inside our python function for recording and process it into a camera channel
+        fetch(`/start_rec/${camera_id}`, {method:"POST"});
 
     }
-    function stopRecording(elem)
+    // Camera_id argument that we'll process into a camera channel in the python code 
+    function stopRecording(camera_id)
     {
-        fetch('/stop_rec', {method:"POST"});
+        console.log(`Stopping recording for camera ${camera_id}`);
+        // Post request to /stop_rec, passing the value of camera_id into the url. We'll collect that inside our python function for stop-recording and process it into a camera channel
+        fetch(`/stop_rec/${camera_id}`, {method: "POST"});
     }
-    
-    function stop(elem)
+
+    function removeCamera(camera_id)
     {
-        fetch('/stop', {method:"POST"})
+        console.log(`Removing camera ${camera_id}`);
+        fetch(`/remove/${camera_id}`, {method: "POST"});
+
     }
-   
 
 
   </script>
