@@ -23,10 +23,13 @@
       <h6>Local Camera Surveillance</h6>
     </div>
     </nav>
+    <div class="top-buttons">
+    <form action="/add" method="post">
+      <input type="text" name="channel" placeholder="Camera channel">
+      <input type="submit" class="btn btn-dark" value="Add Camera">
+    </form>
+  </div>
     {% block main %}{% endblock %}
     
-  
-    
-    </div>
 </body>
 </html>
