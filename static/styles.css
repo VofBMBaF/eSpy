@@ -1,59 +1,85 @@
-* 
+body 
 {
-    background: #153951 !important;
+    background: #ffffff !important;
 
 }
 
 .navbar
 {
-   /*background: #2dd0b2 !important;*/
-    margin-bottom: 50px;
+    background: #01304e !important;
     justify-content: space-evenly;
+    border-radius: 0px 0 10px 10px !important;
+   
 
 }
 
-/* nav
+.navbar *
 {
-   /* background: #2dd0b2 !important;
+    background: #01304e !important;
+    
+
 }
-*/
+
+.container
+{
+    background: #04070c !important;
+    
+}
+
 
 h1
 {
-    color: #2dd0b2 !important;
+    color: #09c7d1 !important;
     font-family: Iceland;
 }
 
 h6
 {
     font-family: Abel;
-    color: #2dd0b2 !important
+    color: #09c7d1 !important
 }
 
-
-
-.img-container
+.grid 
 {
-    align-content: center;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 10%;
-    padding-top: 40px;
-    /*box-shadow: 0 0 15px 10px #0c212e6f;*/
-}
-   
-
-
-.img-container img
-{
-    display:block;
-    margin:auto;
+    
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 25%);
+    grid-gap: 50px;
 }
 
-.buttons
+.grid-img
 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    border: #d4f6fc solid 1px;
+    
+    
+}
+
+.topnav
+{
+    overflow: hidden;
+    width: 100%;
+    background: #17607c !important;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    border: #d4f6fc solid 1px;
+
+}
+
+
+button
+{
+    width: 5%;
+    height: 5%;
+    background: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
 
     
 }
@@ -64,25 +90,44 @@ h6
     
 }
 
-.btn-success 
-{
-    background: rgb(0, 128, 77) !important;
-}
-
-.btn-danger
-{
-    background: rgb(116, 20, 31) !important;
-}
-
-.btn-dark
-{
-    background: rgb(112, 151, 154) !important;
-    height: 35px !important;
-}
-
 .top-buttons
 {
     display: flex;
     justify-content: center;
+    padding-top: 25px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background: #04070c !important;
 
+}
+
+.window
+{
+    margin-top: -5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background: #04070c !important;
+}
+
+.topnav span
+{
+    font-family: Abel;
+    color: #09c7d1 !important;
+    font-size: 20px;
+}
+
+form
+{
+    margin-top: 5%;
+}
+
+input
+{
+    background: #d4f6fc !important;
+}
+
+#adding
+{
+    background: #027ca1 !important;
+    height: 30px;
 }
