@@ -12,7 +12,7 @@ if not os.path.exists(recordings_dir):
     os.makedirs(recordings_dir)
 
 # List of our camera channels
-cameras = [0]
+cameras = [0, 2]
 
 # This function returns the camera with the id of the function's parameter, turned to INT to avoid value errors.
 def find_cameras(list_id):
