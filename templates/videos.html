@@ -7,16 +7,28 @@
 {% block main %}
 
 <!-- All cameras from first index to last in cameras-->
+<div class="grid">
  {% for camera_number in range(0, camera_list)%}
-    <div class="img-container"> 
+   
         <!-- List id is the camera number from the for loop-->
-        <img src="{{ url_for('video_feed', list_id = camera_number) }}" width="640" height="480">
-        <div class="buttons">
-        <button type="button" onclick="removeCamera('{{camera_number}}')" class="btn btn-dark">Remove</button>  
-        <button type="button" onclick="startRecording('{{ camera_number }}')" class="btn btn-success" id="record">Record</button> 
-        <button type="button" onclick="stopRecording('{{ camera_number }}')" class="btn btn-danger" id="stop">Stop Recording</button>
-    </div>
- {%endfor%}   
+        <div class="contain">
+        <div class="topnav">
+            <span>Camera {{camera_number}}</span>
+            <button type="button" onclick="removeCamera('{{camera_number}}')">
+                <i class="material-icons" style="color: #fefefd;">delete</i>
+            </button>  
+        <button type="button" onclick="startRecording('{{ camera_number }}')" id="record">
+            <i class="material-icons" style="color: #fefefd;">radio_button_checked</i>
+        </button> 
+        <button type="button" onclick="stopRecording('{{ camera_number }}')" id="stop">
+            <i class="material-icons" style="color: #fefefd;">stop_circle</i>
+        </button>
+        </div>    
+        <img src="{{ url_for('video_feed', list_id = camera_number) }}" class="grid-img" width="320" height="240">
+        </div>
+
+ {%endfor%}  
+</div> 
 
   <script>
     // Camera_id argument that we'll process into a camera channel in the python code
@@ -41,6 +53,7 @@
         fetch(`/remove/${camera_id}`, {method: "POST"});
 
     }
+    
 
 
   </script>
