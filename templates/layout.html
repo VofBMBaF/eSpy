@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>Streaming</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
@@ -19,17 +20,22 @@
   
     <nav class="navbar">
       <div class="container-fluid">
-      <h1>eSpy</h1>
+      <h1>e<b>Spy</b></h1>
       <h6>Local Camera Surveillance</h6>
     </div>
     </nav>
+    <div class="container">
+    <div class="window">
     <div class="top-buttons">
     <form action="/add" method="post">
-      <input type="text" name="channel" placeholder="Camera channel">
-      <input type="submit" class="btn btn-dark" value="Add Camera">
+      <input type="text" name="channel" placeholder="Channel">
+      <input type="submit" class="btn btn-dark" id="adding" value="Add Camera">
     </form>
   </div>
+
+  
     {% block main %}{% endblock %}
-    
+
+  </div>     
 </body>
 </html>
