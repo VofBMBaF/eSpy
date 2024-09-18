@@ -1,12 +1,12 @@
 body 
 {
-    background: #ffffff !important;
+    background: #121318 !important;
 
 }
 
 .navbar
 {
-    background: #01304e !important;
+    background: #121318 !important;
     justify-content: space-evenly;
     border-radius: 0px 0 10px 10px !important;
    
@@ -15,28 +15,32 @@ body
 
 .navbar *
 {
-    background: #01304e !important;
+    background: #121318 !important;
     
 
 }
 
 .container
 {
-    background: #04070c !important;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: #1a1b21 !important;
+    box-shadow: 0 0 15px #0d0e13;
+    border-radius: 7px;
     
 }
 
 
 h1
 {
-    color: #09c7d1 !important;
+    color: #e3e1e9 !important;
     font-family: Iceland;
 }
 
 h6
 {
     font-family: Abel;
-    color: #09c7d1 !important
+    color: #e3e1e9 !important
 }
 
 .grid 
@@ -47,6 +51,10 @@ h6
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 25%);
     grid-gap: 50px;
+    background: #1e1f25 !important;
+    margin-top: 25px;
+    border-radius: 7px;
+
 }
 
 .grid-img
@@ -55,7 +63,7 @@ h6
     height: 100%;
     object-fit: cover;
     position: relative;
-    border: #d4f6fc solid 1px;
+
     
     
 }
@@ -64,22 +72,31 @@ h6
 {
     overflow: hidden;
     width: 100%;
-    background: #17607c !important;
+    background: #424756 !important;
+    background: #3d4654 !important;
+    padding-bottom: 4px;
+    padding-top: 5px;
     display: flex;
     justify-content: space-evenly;
-    border: #d4f6fc solid 1px;
+    border-radius: 0 0 7px 7px;
+
 
 }
 
 
 button
 {
-    width: 5%;
-    height: 5%;
-    background: transparent;
+
+    background: #ff6619 !important;
+    height: 28px;
+    width: 40%;
     outline: none !important;
-    box-shadow: none !important;
     border: none !important;
+    border-radius: 7px;
+    color: #e3e1e9;
+    padding: 5px;
+    line-height: 10px;
+
 
     
 }
@@ -97,7 +114,7 @@ button
     padding-top: 25px;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    background: #04070c !important;
+    background: #1a1b21 !important;
 
 }
 
@@ -106,13 +123,13 @@ button
     margin-top: -5%;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    background: #04070c !important;
+   
 }
 
 .topnav span
 {
     font-family: Abel;
-    color: #09c7d1 !important;
+    color: #e3e1e9 !important;
     font-size: 20px;
 }
 
@@ -123,11 +140,41 @@ form
 
 input
 {
-    background: #d4f6fc !important;
+    background: #3d4654 !important;
+    outline: none !important;
+    border: none !important;
+    border-radius: 2px;
 }
 
 #adding
 {
-    background: #027ca1 !important;
-    height: 30px;
+    background: #c54e13 !important;
+    height: 28px;
+    line-height: 10px;
+    
+}
+
+.contain
+{
+   
+    background: #1D2733 !important;
+    padding: 5px;
+    padding-bottom: 40px;
+    box-shadow: 0 0 15px #0d0e13;
+    border-radius: 7px;
+}
+
+#stop, #record
+{
+    width: 20%;
+}
+
+#stop
+{
+    background: #ba0e22 !important;
+}
+
+#clear
+{
+    background: #6480ac !important;
 }
