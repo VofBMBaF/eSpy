@@ -12,7 +12,7 @@ if not os.path.exists(recordings_dir):
     os.makedirs(recordings_dir)
 
 # List of our camera channels
-cameras = [0, 2]
+cameras = [0]
 
 # This function returns the camera with the id of the function's parameter, turned to INT to avoid value errors.
 def find_cameras(list_id):
@@ -66,7 +66,8 @@ def video_feed(list_id):
     # Generator function response
     # Passes that id to the gen function so we know what to display to the video feed
     return Response(gen(list_id),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')    
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 @app.route("/")
 def index():
