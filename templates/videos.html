@@ -12,19 +12,18 @@
    
         <!-- List id is the camera number from the for loop-->
         <div class="contain">
+            <img src="{{ url_for('video_feed', list_id = camera_number) }}" class="grid-img" width="320" height="240" onclick="openFullScreen(this)">
         <div class="topnav">
-            <span>Camera {{camera_number}}</span>
-            <button type="button" onclick="removeCamera('{{camera_number}}')">
-                <i class="material-icons" style="color: #fefefd;">delete</i>
-            </button>  
-        <button type="button" onclick="startRecording('{{ camera_number }}')" id="record">
-            <i class="material-icons" style="color: #fefefd;">radio_button_checked</i>
-        </button> 
-        <button type="button" onclick="stopRecording('{{ camera_number }}')" id="stop">
-            <i class="material-icons" style="color: #fefefd;">stop_circle</i>
-        </button>
-        </div>    
-        <img src="{{ url_for('video_feed', list_id = camera_number) }}" class="grid-img" width="320" height="240">
+            <!--  <span>Camera {{camera_number}}</span>-->
+              <button type="button" onclick="removeCamera('{{camera_number}}')" id="clear">
+                  Clear
+          <button type="button" onclick="startRecording('{{ camera_number }}')" id="record">
+              Start
+          </button> 
+         <button type="button" onclick="stopRecording('{{ camera_number }}')" id="stop">
+              Stop
+          </button>
+          </div>  
         </div>
 
  {%endfor%}  
@@ -32,6 +31,32 @@
 
   <script>
     // Camera_id argument that we'll process into a camera channel in the python code
+
+    function openFullScreen(element)
+    {
+        if (element.requestFullscreen) 
+        {
+            element.requestFullscreen();
+        } 
+
+        else if (element.mozRequestFullScreen)
+        { // Firefox
+            element.mozRequestFullScreen();
+        } 
+
+        else if (element.webkitRequestFullscreen) 
+        { 
+            // Chrome, Safari, and Opera
+            element.webkitRequestFullscreen();
+        } 
+
+        else if (element.msRequestFullscreen) 
+        { 
+            // IE/Edge
+            element.msRequestFullscreen();
+        }
+    }
+
     function startRecording(camera_id) 
     {
         console.log(`Starting recording for camera ${camera_id}`);
