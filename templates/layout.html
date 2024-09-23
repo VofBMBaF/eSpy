@@ -11,31 +11,104 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <title>Streaming</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
     </style>
 </head>
 <body>
-  
     <nav class="navbar">
       <div class="container-fluid">
       <h1>e<b>Spy</b></h1>
+      <span>
+      <span class="dropdown">
+      <button type="button" id="menu" class="dropbtn" onclick="dropdown()">
+        Menu
+      </button>
+        <div class="dropdown-content" id="myDropdown">
+          <div class="add-drop">
+          <button class="add-btn">Add...</button>
+          <div class="add-content">
+            <button>USB / RTSP</button>
+            <button>JPEG</button>
+          </div>
+        </div>
+          <button>Settings</button>
+          <button>About</button>
+          <button>OpenSource</button>
+        </div>
+      </span>  
       <h6>Local Camera Surveillance</h6>
+    </span>
     </div>
     </nav>
+
+
+
     <div class="container">
+      <div class="form-popup">
+        <div class="top-buttons">
+          <h6>
+            <span class="material-symbols-outlined" id="help-icon">
+              help
+              </span>
+            To obtain the RTSP URL for your camera, we recommend using tools such as the AgentDVR URL Setup Guide or consulting your camera manufacturer's manual or website.
+
+          Please note that we are not affiliated with AgentDVR or any similar tools.
+
+          </h6>
+          <h6>
+            <span class="material-symbols-outlined" id="help-icon">
+              help
+              </span>
+            For USB or webcameras, use numeric values (ie: 0, 2, 4) to represent the channel.
+          </h6>
+          <form action="/add" method="post">
+            <input type="text" name="channel" placeholder="  Channel   /   URL">
+          </form>
+          <div>
+            <div class="pop-buttons">
+              <button id="cancel" >Cancel</button>
+              <input type="submit" class="btn btn-dark" id="adding" value="Add Camera">
+            </div>
+          
+        
+        </div>
+        </div>
+
+  
+      </div>
     <div class="window">
-    <div class="top-buttons">
-    <form action="/add" method="post">
-      <input type="text" name="channel" placeholder="Channel">
-      <input type="submit" class="btn btn-dark" id="adding" value="Add Camera">
-    </form>
-  </div>
+   
+
 
   
     {% block main %}{% endblock %}
 
-  </div>     
+  </div>
+  
+ <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function dropdown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
 </body>
 </html>
