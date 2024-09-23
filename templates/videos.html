@@ -18,11 +18,19 @@
               <button type="button" onclick="removeCamera('{{camera_number}}')" id="clear">
                   Clear
           <button type="button" onclick="startRecording('{{ camera_number }}')" id="record">
-              Start
+              Rec
           </button> 
          <button type="button" onclick="stopRecording('{{ camera_number }}')" id="stop">
               Stop
           </button>
+          <button type="button" id="menu">
+            <i class="material-icons md-18">menu</i></button>
+         <!-- <button type="button" onclick="detectMotion('{{ camera_number }}')" id="stop">
+            Detect
+        </button>
+        <button type="button" onclick="stopMotion('{{ camera_number }}')" id="stop">
+            *
+        </button>-->
           </div>  
         </div>
 
@@ -31,6 +39,19 @@
 
   <script>
     // Camera_id argument that we'll process into a camera channel in the python code
+
+
+    function detectMotion(camera_id)
+    {
+        console.log(`Detecting motion for camera ${camera_id}`);
+        fetch(`/detect_motion/${camera_id}`, {method: "POST"});
+    }
+
+    function stopMotion(camera_id)
+    {
+        console.log(`Stopping motion detection for camera ${camera_id}`);
+        fetch(`/stop_motion/${camera_id}`, {method: "POST"})
+    }
 
     function openFullScreen(element)
     {
