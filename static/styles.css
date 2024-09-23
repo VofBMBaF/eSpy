@@ -27,6 +27,7 @@ body
     background: #1a1b21 !important;
     box-shadow: 0 0 15px #0d0e13;
     border-radius: 7px;
+
     
 }
 
@@ -40,7 +41,8 @@ h1
 h6
 {
     font-family: Abel;
-    color: #e3e1e9 !important
+    color: #e3e1e9 !important;
+    font-size: 10px;
 }
 
 .grid 
@@ -62,7 +64,9 @@ h6
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: relative;
+    /*position: relative;*/
+    z-index: 1;
+    
 
     
     
@@ -109,12 +113,13 @@ button
 
 .top-buttons
 {
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     padding-top: 25px;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    background: #1a1b21 !important;
+    padding-bottom: 2.5%;
+    /*background: #1a1b21 !important;*/
 
 }
 
@@ -133,26 +138,6 @@ button
     font-size: 20px;
 }
 
-form
-{
-    margin-top: 5%;
-}
-
-input
-{
-    background: #3d4654 !important;
-    outline: none !important;
-    border: none !important;
-    border-radius: 2px;
-}
-
-#adding
-{
-    background: #c54e13 !important;
-    height: 28px;
-    line-height: 10px;
-    
-}
 
 .contain
 {
@@ -177,4 +162,178 @@ input
 #clear
 {
     background: #6480ac !important;
+}
+
+/* Dropdown */
+
+.dropdown
+{
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+
+.dropdown-content
+{
+    width: 160px;
+    box-shadow:6px 6px rgba(0,0,0,0.2);
+    position: absolute;
+    background-color:#1e1f25 !important;
+    display: none;
+    z-index: 2;
+    
+
+}
+
+.dropdown-content button
+{
+   
+    margin: 2.5px;
+    display: block;
+    background-color:#1e1f25 !important;
+    color:#6480ac;
+    text-align: left;
+    
+}
+
+.show
+{
+    display: block;
+}
+
+#menu:hover
+{
+    color:#6480ac;
+}
+
+/* Dropdown for Add Button */
+
+.add-drop
+{
+    position: relative;
+    background-color:#1e1f25 !important;
+}
+
+.add-drop *
+{
+    background-color:#1e1f25 !important;
+}
+
+.add-content
+{
+    display: none; 
+    background-color:#1e1f25 !important;
+    position: absolute;
+    width: 90px;
+    z-index: 1;
+    translate: -90px -33px;
+    box-shadow:0px 4px rgba(0,0,0,0.2);
+}
+
+.add-content button
+{
+    
+    display: block;
+    background-color:#1e1f25 !important;
+    font-size: 12px;
+    text-align: left;
+    width: 100%;
+    margin: 2px;
+    overflow: hidden;
+    color:#6480ac;
+
+}
+
+.add-content button:hover
+{
+    color: rgb(199, 209, 255);
+}
+
+.add-drop:hover .add-content
+{
+   
+   display: block;
+}
+
+.add-drop:hover .add-btn
+{
+    color: rgb(199, 209, 255);
+}
+
+.dropdown button:hover
+{
+    color: rgb(199, 209, 255);
+}
+
+/* Form Pop Up */
+
+.form-popup
+{
+    z-index: 99999;
+    width: 50%;
+    margin: auto;
+    translate: 0px 50%;
+    background-color: #23232e;
+    color: #dadeff;
+    box-shadow: 0 0 8px #161821;
+    border-radius: 12px;
+
+}
+
+form
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+}
+
+input
+{
+    background: #424250 !important;
+    outline: none !important;
+    border: none !important;
+    border-radius: 12px;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 5px;
+    
+}
+
+#adding
+{
+    background: #6480ac !important;
+    height: 40px;
+    width: 110px;
+    border-radius: 12px;
+    line-height: 10px;
+    /*border: 2px solid #6480ac !important;*/
+    text-align: center;
+    
+    
+}
+
+#help-icon
+{
+    font-size: 11px !important;
+    color: #97a7c1 !important;
+}
+
+#cancel
+{
+    background: #23232e !important;
+    border: 2px solid #6480ac !important;
+    height: 40px;
+    width: 110px;
+    border-radius: 12px;
+    line-height: 10px;
+    text-align: center;
+    
+}
+
+.pop-buttons
+{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
 }
