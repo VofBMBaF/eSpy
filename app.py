@@ -16,7 +16,7 @@ cameras = [0]
 
 # This function returns the camera with the id of the function's parameter, turned to INT to avoid value errors.
 def find_cameras(list_id):
-    return cameras[int(list_id)]    
+    return cameras[int(list_id)]   
 
 # Dictionary to pass recording flags for each camera
 recording_states = {}
@@ -27,17 +27,19 @@ motion_states = {}
 video_writers = {}
 
 def gen(camera_id):
-
+    global detected, video_writers
     # Finds camera depending on the id inside the list
     cam = find_cameras(camera_id)
     # Collects stream from specified camera
     vid = cv2.VideoCapture(cam)
+    detected[cam] = False
+    
     
     val, frame1 = vid.read()
     val, frame2 = vid.read()
 
     while True:
-        time.sleep(0.1)
+        time.sleep(0.3)
 
         if not val:
             break
@@ -63,19 +65,23 @@ def gen(camera_id):
                 for contour in contours:
                     (x, y, w, h) = cv2.boundingRect(contour)
 
-                    if cv2.contourArea(contour) < 100:
-                        #detected[cam] = False
+                    if cv2.contourArea(contour) > 100:
+                       # if video_writers[cam].isOpened():
+                            #video_writers[cam].release()
+                            #print("released video")
                         continue
 
                     cv2.rectangle(frame1, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                    
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                     try:
                         detected[cam] = True
-                        video_writers[cam].write(frame1)
+                        cv2.imwrite(os.path.join(recordings_dir, f'{timestamp}_{cam}.jpg'), frame1)
+                        #video_writers[cam].write(frame1)
                         print("successfully wrote to video writer")
-                    except:
-                        print("Error recording motion")    
-   
+                      
+                        
+                    except Exception as e:
+                        print(e)  
 
             # ret holds true or false
             # Imencode converts image formats (jpeg here) into streaming data and stores them in memory cache, effectively transforming them into bytes
@@ -87,6 +93,7 @@ def gen(camera_id):
             # Generator function yields interruptable stream of JPEG bytes
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + bytearray(buffer) + b'\r\n')
+
     
 
 @app.route('/video_feed/<string:list_id>/')
@@ -103,7 +110,7 @@ def index():
     # camera_list is the amount of cameras we have in the list
     # camera holds all values from cameras 
 
-    return render_template("videos.html", camera_list = len(cameras), cameras = cameras)
+    return render_template("videos.html", camera_list = len(cameras), cameras = cameras, recording = recording_states)
 
 @app.route('/start_rec/<int:camera_id>', methods=["POST"])
 def start_recording(camera_id):
@@ -120,10 +127,10 @@ def start_recording(camera_id):
 
     # Checks if camera is not already recording
     if not recording_states.get(cam, False):
-        fourcc = cv2.VideoWriter_fourcc(*"IYUV")
+        fourcc = cv2.VideoWriter_fourcc(*"mp4v")
         
         # Assign a VideoWriter objct to the cam in the dictionary
-        video_writers[cam] = cv2.VideoWriter(os.path.join(recordings_dir, f'{timestamp}_{cam}_recording.avi'), fourcc, 20.0, (640, 480))
+        video_writers[cam] = cv2.VideoWriter(os.path.join(recordings_dir, f'{timestamp}_{cam}_recording.mp4'), fourcc, 20.0, (640, 480))
         # Set recording to true for this camera
         recording_states[cam] = True
 
@@ -138,14 +145,10 @@ def detect_motion(camera_id):
 
     if not motion_states.get(cam, False):
         motion_states[cam] = True
-        if detected:
-            fourcc = cv2.VideoWriter_fourcc(*"IYUV")
-            video_writers[cam] = cv2.VideoWriter(os.path.join(recordings_dir, f'{timestamp}_{cam}_recording.avi'), fourcc, 20.0, (640, 480))
-        #if not detected:
-        #    if video_writers[cam].isOpened():
-        #        video_writers[cam].release()
+        #fourcc = cv2.VideoWriter_fourcc(*"IYUV")
+        #video_writers[cam] = cv2.VideoWriter(os.path.join(recordings_dir, f'{timestamp}_{cam}_recording.avi'), fourcc, 20.0, (640, 480))
         
-    return '', 203     
+    return '', 203   
 
 @app.route('/stop_motion/<int:camera_id>', methods=["POST"])
 def stop_motion(camera_id):
