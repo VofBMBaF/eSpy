@@ -10,6 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <title>Streaming</title>
@@ -23,14 +27,16 @@
       <h1>e<b>Spy</b></h1>
       <span>
       <span class="dropdown">
-      <button type="button" id="menu" class="dropbtn" onclick="dropdown()">
-        Menu
+      <button type="button"  class="dropbtn" id="menu" onclick="dropdown()">
+
+        <i class="material-icons md-18" id="menu-ic">menu</i>
+      
       </button>
         <div class="dropdown-content" id="myDropdown">
           <div class="add-drop">
-          <button class="add-btn">Add...</button>
+          <button class="add-btn">Add</button>
           <div class="add-content">
-            <button>USB / RTSP</button>
+            <button onclick="addDropdown()">USB / RTSP</button>
             <button>JPEG</button>
           </div>
         </div>
@@ -39,7 +45,6 @@
           <button>OpenSource</button>
         </div>
       </span>  
-      <h6>Local Camera Surveillance</h6>
     </span>
     </div>
     </nav>
@@ -47,38 +52,7 @@
 
 
     <div class="container">
-      <div class="form-popup">
-        <div class="top-buttons">
-          <h6>
-            <span class="material-symbols-outlined" id="help-icon">
-              help
-              </span>
-            To obtain the RTSP URL for your camera, we recommend using tools such as the AgentDVR URL Setup Guide or consulting your camera manufacturer's manual or website.
-
-          Please note that we are not affiliated with AgentDVR or any similar tools.
-
-          </h6>
-          <h6>
-            <span class="material-symbols-outlined" id="help-icon">
-              help
-              </span>
-            For USB or webcameras, use numeric values (ie: 0, 2, 4) to represent the channel.
-          </h6>
-          <form action="/add" method="post">
-            <input type="text" name="channel" placeholder="  Channel   /   URL">
-          </form>
-          <div>
-            <div class="pop-buttons">
-              <button id="cancel" >Cancel</button>
-              <input type="submit" class="btn btn-dark" id="adding" value="Add Camera">
-            </div>
-          
-        
-        </div>
-        </div>
-
-  
-      </div>
+      
     <div class="window">
    
 
@@ -86,6 +60,7 @@
   
     {% block main %}{% endblock %}
 
+    
   </div>
   
  <script>
@@ -94,6 +69,7 @@ toggle between hiding and showing the dropdown content */
 function dropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
+
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
@@ -108,7 +84,99 @@ window.onclick = function(event) {
     }
   }
 }
+
+function addDropdown() {
+  document.getElementById("pop-content").classList.toggle('reveal');
+}
+
+function closeAdd() {
+  document.getElementById("pop-content").classList.remove('reveal');
+}
+
 </script>
+
+<div class="form-popup" id="pop-content">
+  <span class="top-span">
+    <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <h2 class="add-cam-h2">Add a Camera</h2>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+  <i class="spacer" id="ic1"></i>
+
+  <button onclick="closeAdd()" class="close-button">
+    <i class="material-icons md-18" id="close-ic">close</i>
+  </button>  
+  </span>
+  <div class="top-buttons">
+    <h6>
+      <span class="material-symbols-outlined" id="help-icon">
+        help
+        </span>
+      To obtain the RTSP URL for your camera, we recommend using tools such as the AgentDVR URL Setup Guide or consulting your camera manufacturer's manual or website.
+
+    Please note that we are not affiliated with AgentDVR or any similar tools.
+
+    </h6>
+    <h6>
+      <span class="material-symbols-outlined" id="help-icon">
+        help
+        </span>
+      For USB or webcameras, use numeric values (e.g. 0, 2, 4) to represent the channel.
+    </h6>
+    
+    <form action="/add" method="post">
+      <input type="text" name="channel" placeholder="Channel  /  URL">
+    
+       <div class="pop-buttons">
+        <input type="submit" class="btn btn-dark" id="adding" value="Add Camera" onclick="addDropdown()">
+      </div>
+    </form>
+   <!-- <button id="cancel" type="button" onclick="closeAdd()">Cancel</button>-->
+  
+  
+  </div>
+
+
+</div>
 
 </body>
 </html>
