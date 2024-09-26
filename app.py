@@ -2,7 +2,7 @@ import cv2
 from datetime import datetime
 import os
 import time
-from flask import Flask, render_template, Response, request, redirect
+from flask import Flask, render_template, Response, request, redirect, jsonify
 
 
 app = Flask(__name__)
@@ -27,72 +27,66 @@ motion_states = {}
 video_writers = {}
 
 def gen(camera_id):
+
     global detected, video_writers
     # Finds camera depending on the id inside the list
     cam = find_cameras(camera_id)
     # Collects stream from specified camera
     vid = cv2.VideoCapture(cam)
     detected[cam] = False
-    
-    
+       
     val, frame1 = vid.read()
     val, frame2 = vid.read()
 
-    while True:
-        time.sleep(0.3)
-
-        if not val:
-            break
-
-        else:
-
-            # get() tries to get the value associated with camera_id from the dictionary, if not found, it returns False
-            if recording_states.get(cam, False):
-                # Find the video writer for that camera and write the frames into it
-                print("writing frame 1")
-                video_writers[cam].write(frame1)
-
-            if motion_states.get(cam, False):
-
-                diff = cv2.absdiff(frame1, frame2)
-                gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
-                blur = cv2.GaussianBlur(gray, (5,5), 0)
-                _, tresh = cv2.threshold(blur, 100, 255, cv2.THRESH_BINARY)
-                dilated = cv2.dilate(tresh, None, iterations=3)
-                eroded = cv2.morphologyEx(dilated, cv2.MORPH_OPEN, (3,3))
-                contours, _ = cv2.findContours(eroded, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-                for contour in contours:
-                    (x, y, w, h) = cv2.boundingRect(contour)
-
-                    if cv2.contourArea(contour) > 100:
-                       # if video_writers[cam].isOpened():
-                            #video_writers[cam].release()
-                            #print("released video")
-                        continue
-
-                    cv2.rectangle(frame1, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                    try:
-                        detected[cam] = True
-                        cv2.imwrite(os.path.join(recordings_dir, f'{timestamp}_{cam}.jpg'), frame1)
-                        #video_writers[cam].write(frame1)
-                        print("successfully wrote to video writer")
-                      
-                        
-                    except Exception as e:
-                        print(e)  
-
-            # ret holds true or false
-            # Imencode converts image formats (jpeg here) into streaming data and stores them in memory cache, effectively transforming them into bytes
-            ret, buffer = cv2.imencode('.jpg', frame1)
-
-            frame1 = frame2
-            val, frame2 = vid.read()
+    if vid.isOpened():
+        while True:
             
-            # Generator function yields interruptable stream of JPEG bytes
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + bytearray(buffer) + b'\r\n')
+            if not val:
+                break
+
+            else:
+
+                # get() tries to get the value associated with camera_id from the dictionary, if not found, it returns False
+                if recording_states.get(cam, False):
+                    # Find the video writer for that camera and write the frames into it
+                    video_writers[cam].write(frame1)
+
+                if motion_states.get(cam, False):
+
+                    diff = cv2.absdiff(frame1, frame2)
+                    gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+                    blur = cv2.GaussianBlur(gray, (5,5), 0)
+                    _, tresh = cv2.threshold(blur, 100, 255, cv2.THRESH_BINARY)
+                    dilated = cv2.dilate(tresh, None, iterations=3)
+                    eroded = cv2.morphologyEx(dilated, cv2.MORPH_OPEN, (3,3))
+                    contours, _ = cv2.findContours(eroded, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+                    for contour in contours:
+                        (x, y, w, h) = cv2.boundingRect(contour)
+
+                        if cv2.contourArea(contour) > 100:
+
+                            continue
+
+                        cv2.rectangle(frame1, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                        try:
+                            detected[cam] = True
+                            cv2.imwrite(os.path.join(recordings_dir, f'{timestamp}_{cam}.jpg'), frame1)
+                       
+                        except Exception as e:
+                            print(e)  
+
+                # ret holds true or false
+                # Imencode converts image formats (jpeg here) into streaming data and stores them in memory cache, effectively transforming them into bytes
+                ret, buffer = cv2.imencode('.jpg', frame1)
+
+                frame1 = frame2
+                val, frame2 = vid.read()
+                
+                # Generator function yields interruptable stream of JPEG bytes
+                yield (b'--frame\r\n'
+                    b'Content-Type: image/jpeg\r\n\r\n' + bytearray(buffer) + b'\r\n')
 
     
 
@@ -159,7 +153,7 @@ def stop_motion(camera_id):
         #video_writers[cam].release()
         motion_states[cam] = False
    
-    return '', 203 
+    return jsonify({"success": True}) # Indicate success
 
 
 @app.route('/stop_rec/<int:camera_id>', methods=["POST"])
@@ -174,8 +168,7 @@ def stop_recording(camera_id):
         video_writers[cam].release()
         # Set recording to false
         recording_states[cam] = False
-    return '', 203 
-
+    return jsonify({"success": True}) # Indicate success
 
 @app.route("/add", methods= ["POST"])
 def add_cameras():
@@ -184,20 +177,27 @@ def add_cameras():
     if request.method == "POST":
         channel = request.form.get("channel")
         if not channel:
-            print("incorrect channel or blank")
-            return 400
-        print(f"Here is a channel {channel}")
-        channel = int(channel)
-        cameras.append(channel)
+            return redirect("/")
+        
+        if not channel == None: 
+            channel = int(channel)
+            try:
+                cameras.append(channel)
+            except:
+                return 400    
     return redirect("/")   
 
 @app.route("/remove/<int:camera_id>", methods = ["POST"])
 def removeCamera(camera_id):
+
     cam = find_cameras(camera_id)
     global cameras
     if request.method == "POST":
         if not cam in cameras:
-            print("No camera found")
             return "error finding camera", 400
-        cameras.remove(cam)
-    return redirect("/")   
+        try:
+            cameras.remove(cam)
+        except:
+            return "error removing camera", 400
+    return jsonify({"success": True}) # Indicate success
+  
