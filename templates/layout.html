@@ -35,12 +35,13 @@
         <div class="dropdown-content" id="myDropdown">
           <div class="add-drop">
           <button class="add-btn">Add</button>
+          
           <div class="add-content">
             <button onclick="addDropdown()">USB / RTSP</button>
             <button>JPEG</button>
           </div>
         </div>
-          <button>Settings</button>
+          <button onclick="openSettings()">Settings</button>
           <button>About</button>
           <button>OpenSource</button>
         </div>
@@ -94,6 +95,10 @@ function closeAdd() {
 }
 
 </script>
+
+
+
+
 
 <div class="form-popup" id="pop-content">
   <span class="top-span">
@@ -172,10 +177,7 @@ function closeAdd() {
     </form>
    <!-- <button id="cancel" type="button" onclick="closeAdd()">Cancel</button>-->
   
-  
   </div>
-
-
 </div>
 
 </body>
