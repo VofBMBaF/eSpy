@@ -12,7 +12,8 @@ if not os.path.exists(recordings_dir):
     os.makedirs(recordings_dir)
 
 # List of our camera channels
-cameras = [0]
+cameras = [0, 2, 4]
+
 
 # This function returns the camera with the id of the function's parameter, turned to INT to avoid value errors.
 def find_cameras(list_id):
@@ -25,6 +26,9 @@ detected = {}
 motion_states = {}
 # Dictionary of video writer objects for each camera
 video_writers = {}
+
+recordFormat = "avi"
+sensitivity = {}
 
 def gen(camera_id):
 
@@ -47,8 +51,7 @@ def gen(camera_id):
             else:
 
                 # get() tries to get the value associated with camera_id from the dictionary, if not found, it returns False
-                if recording_states.get(cam, False):
-                    # Find the video writer for that camera and write the frames into it
+                if recording_states.get(cam, False):                    # Find the video writer for that camera and write the frames into it
                     video_writers[cam].write(frame1)
 
                 if motion_states.get(cam, False):
@@ -60,13 +63,19 @@ def gen(camera_id):
                     dilated = cv2.dilate(tresh, None, iterations=3)
                     eroded = cv2.morphologyEx(dilated, cv2.MORPH_OPEN, (3,3))
                     contours, _ = cv2.findContours(eroded, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+                    
 
                     for contour in contours:
                         (x, y, w, h) = cv2.boundingRect(contour)
 
-                        if cv2.contourArea(contour) > 100:
+                        if not sensitivity.get(cam, False):
+                            if cv2.contourArea(contour) > 500:
 
-                            continue
+                                continue
+                        else: 
+                            if cv2.contourArea(contour) > int(sensitivity[cam]):       
+
+                                continue
 
                         cv2.rectangle(frame1, (x, y), (x+w, y+h), (0, 255, 0), 2)
                         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -88,7 +97,32 @@ def gen(camera_id):
                 yield (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + bytearray(buffer) + b'\r\n')
 
-    
+
+
+@app.route('/sensitive/<int:camera_id>', methods = ["POST"])
+def sensitive(camera_id):
+    cam = find_cameras(camera_id)
+
+    if request.method == "POST":
+        global sensitivity
+        area = request.form.get("area")
+        sensitivity[cam] = area
+        print("successfully set new sensitivity area")
+    return redirect("/")       
+
+
+
+@app.route('/format', methods = ["POST"])
+def process_format():
+
+    if request.method == "POST":
+        global recordFormat
+        format = request.form.get("format")
+        recordFormat = format
+    return redirect("/")   
+
+
+
 
 @app.route('/video_feed/<string:list_id>/')
 def video_feed(list_id):
@@ -124,7 +158,7 @@ def start_recording(camera_id):
         fourcc = cv2.VideoWriter_fourcc(*"mp4v")
         
         # Assign a VideoWriter objct to the cam in the dictionary
-        video_writers[cam] = cv2.VideoWriter(os.path.join(recordings_dir, f'{timestamp}_{cam}_recording.mp4'), fourcc, 20.0, (640, 480))
+        video_writers[cam] = cv2.VideoWriter(os.path.join(recordings_dir, f'{timestamp}_{cam}_recording.{recordFormat}'), fourcc, 20.0, (640, 480))
         # Set recording to true for this camera
         recording_states[cam] = True
 
