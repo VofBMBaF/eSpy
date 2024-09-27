@@ -29,28 +29,66 @@
          <button type="button" onclick="stopRecording('{{ camera_number }}')" id="stop">
               STOP
           </button>
-          <span class="menu-icon" onclick="">
-            <i class="material-icons md-18" id="img-menu" onclick="">more_vert
-            </i>
+          <div class="more-dropdown">
+            <button class="more-icon" onclick="moreDropdown()">
+                <i class="material-icons md-18" id="img-menu">more_vert</i>
+            </button>
+            <div class="more-dropdown-content" id="more-dropdown-content">
+                <button onclick="removeCamera('{{camera_number}}')">Remove</button>
+                <div class="motion-dropdown">
+                    <button class="motion-btn">Motion Detection</button>
+                    <div class="motion-content">
+                        <button onclick="detectMotion('{{camera_number}}')">Start</button>
+                        <button onclick="stopMotion('{{camera_number}}')">Stop</button>
+                    </div>
+                </div>
+                <button onclick="openSettings()">Settings</button>
+            </div>
+        </div>
+                               
         </span>
          
-         
-         <!-- <button type="button" onclick="detectMotion('{{ camera_number }}')" id="stop">
-            Detect
-        </button>
-        <button type="button" onclick="stopMotion('{{ camera_number }}')" id="stop">
-            *
-        </button>-->
           </div>  
         </div>
 
  {%endfor%}  
 </div> 
 
-  <script>
+<script>
     // Camera_id argument that we'll process into a camera channel in the python code
 
+    function closeSettings() {
+
+        document.getElementById("settings-content").classList.remove('appear');
+    }
+
+    function openSettings() {
+
+    document.getElementById("settings-content").classList.toggle('appear');
+}
+    
+
+
     var isRecording = false;
+
+    function moreDropdown() {
+    document.getElementById("more-dropdown-content").classList.toggle("toggle");
+    console.log("Dropdown toggle");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.addEventListener('click', function(event) {
+    console.log("Window clicked:", event.target);
+    const dropdownContent = document.getElementById("more-dropdown-content");
+    // Check if the clicked element is not the button or dropdown content
+    if (!event.target.closest('.more-dropdown')) {
+        // Remove the toggle class to hide the dropdown
+        if (dropdownContent.classList.contains("toggle")) {
+            console.log("Closing dropdown");
+            dropdownContent.classList.remove("toggle"); // Close the dropdown
+        }
+    }
+});
 
 
 
@@ -155,5 +193,147 @@
     
 
   </script>
+
+<div class="settings-popup" id="settings-content">
+    <span class="top-span">
+
+    <h2>Settings</h2>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i> <i class="spacer" id="ic1"></i> <i class="spacer" id="ic1"></i> <i class="spacer" id="ic1"></i> <i class="spacer" id="ic1"></i> <i class="spacer" id="ic1"></i> <i class="spacer" id="ic1"></i> <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+    <i class="spacer" id="ic1"></i>
+
+    <button onclick="closeSettings()" class="close-button">
+        <i class="material-icons md-18" id="close-ic">close</i>
+      </button>  
+      </span>
+
+    <div class="setting-div">
+    <h4>Motion Detection</h4>  
+    {% for camera_number in range(0, camera_list)%}
+    <div class="each-camera" style="--index: {{ camera_number }}">
+    <h5>Camera {{camera_number}}</h5>
+    <form action="{{ url_for('sensitive', camera_id=camera_number) }}" method="post">
+     <span class="subheading">Sensitivity (default: 500)</span>
+      <input type="text" name="area" placeholder="500">
+    </form>
+    </div>
+    {%endfor%}
+    
+
+    <!---<h6>
+      <span class="material-symbols-outlined" id="help-icon">
+        help
+        </span>
+      500 is suitable for outdoors (smaller objects). 
+    
+      This value refers to the area of object contours we're detecting. 
+      <h6>
+        <span class="material-symbols-outlined" id="help-icon">
+          help
+          </span>
+        For more information, consult the README.md file. 
+      </h6>
+    
+    </h6>-->
+
+</div>
+<div class="setting-div">
+
+    <h4>Recording</h4>
+    <span class="subheading">Video export format</span>
+    <form action="/format" method="post" id="record-form">
+      <div>
+      <input type="radio" name="format" id="avi" value="avi">
+      <label for="avi" style="color: #dadeff;">AVI</label>
+      </div>
+      <div>
+      <input type="radio" name="format" id="mp4" value="mp4">
+      <label for="avi" style="color: #dadeff;">MP4</label>
+      </div>
+      <input type="submit" class="apply" value="Apply">
+    </form>
+</div>
+<div class="setting-div">
+    <h4>Export Data</h4>
+    <span class="subheading">Coming soon</span>
+</div>
+<div class="setting-div">
+    <h4>Account Settings</h4>
+    <span class="subheading">Coming soon</span>
+</div>    
+    </div>
+
+    
 
   {% endblock %}  
