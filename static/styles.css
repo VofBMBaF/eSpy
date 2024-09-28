@@ -536,7 +536,7 @@ input
 
 /* Menu For Camera */
 
-#img-menu 
+[id^="img-menu-"]
 {
    
     color:#dadeff;
@@ -545,7 +545,7 @@ input
     /*translate: 45px 0px;*/
 }
 
-#img-menu:hover
+[id^="img-menu-"]:hover
 {
     
     color:rgb(202, 217, 255);
@@ -559,7 +559,7 @@ input
     
 }
 
-.more-icon
+[class^="more-icon-"]
 {
     height: 60px;
     width: 30px;
@@ -567,7 +567,7 @@ input
     background: none  !important ;
 }
 
-.more-icon:hover
+[class^="more-icon-"]:hover
 {
     cursor: pointer;
     transform: scale(1.1);
@@ -600,7 +600,7 @@ button {
 
 /* More Menu Dropdown */
 
-.more-dropdown
+[class^="more-dropdown-"]
 {
     position: relative;
     display: inline-block;
@@ -608,7 +608,7 @@ button {
    
 }
 
-.more-dropdown-content
+[class^="more-dropdown-content"]
 {
     width: 160px;
     border-radius: 12px 12px 12px 12px;
@@ -623,7 +623,7 @@ button {
 
 }
 
-.more-dropdown-content button
+[class^="more-dropdown-content"] button
 {
     margin: 2px;
     display: block;
@@ -634,13 +634,13 @@ button {
     width: 98%;
 }
 
-.more-dropdown-content button:hover
+[class^="more-dropdown-content"] button:hover
 {
     color: #f5f5f5 !important;
     background-color: #6480ac !important;
 }
 
-.more-dropdown-content.toggle {
+[class^="more-dropdown-content"].toggle {
     display: block; /* Show when toggled */
 }
 
