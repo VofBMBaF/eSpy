@@ -12,7 +12,7 @@ if not os.path.exists(recordings_dir):
     os.makedirs(recordings_dir)
 
 # List of our camera channels
-cameras = [0, 2, 4]
+cameras = []
 
 
 # This function returns the camera with the id of the function's parameter, turned to INT to avoid value errors.
@@ -107,7 +107,6 @@ def sensitive(camera_id):
         global sensitivity
         area = request.form.get("area")
         sensitivity[cam] = area
-        print("successfully set new sensitivity area")
     return redirect("/")       
 
 
@@ -150,7 +149,7 @@ def start_recording(camera_id):
     global recording_states, video_writers, motion_record_states
 
     # Feedback
-    print(f"Starting recording for camera {cam}")
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # Checks if camera is not already recording
