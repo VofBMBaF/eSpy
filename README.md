@@ -18,9 +18,10 @@ Tech Stack:
 * <img src="https://github.com/user-attachments/assets/feb1047a-3ca5-45a2-b855-1033d8c66c44" width = "20" /> Bootstrap
 * <img src="https://github.com/user-attachments/assets/97813c70-c13f-4a01-b0cc-e8eb0cf60852" width = "20" /> Javascript
 
-*  <img src="https://github.com/user-attachments/assets/9928178c-c240-4c49-bf84-0682ff14c217" width = "20" /> Python
+*  <img src="https://github.com/user-attachments/assets/cf073de1-5f3d-4f75-acda-cee6362d0ffd" width = "20" /> Python
 *  <img src="https://github.com/user-attachments/assets/8a651c78-d028-4c57-981d-00737266999f" width = "20" /> Flask
 </b>
+
 
 
 
