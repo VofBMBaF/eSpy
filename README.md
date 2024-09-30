@@ -8,7 +8,25 @@ eSpy is a light-weight streaming and recording web application that supports vid
 
 It's designed to maintain speed even with larger number of video sources, and comes with an inbuilt motion detection feature using a dynamic, adaptable background subtraction algorithm combined with contour detection which allows the user to adjust the sensitivity of their motion detector as needed depending on the surrounding.
 
-This project offers a glance at the start of a bigger software, with promises that more features are on the way. 
+This project offers a glance at the start of a bigger software, with promises that more features are on the way. This project was developed by Vukica Branković as the final project for Harvard's Computer Science course (cs50), combining technologies taught on the course and additional research on computer vision.
+
+Tech Stack:
+
+* ![image](https://github.com/user-attachments/assets/5be46c01-8d93-428a-b85d-9820d158ab60) HTML
+* ![image](https://github.com/user-attachments/assets/2a652c8c-1dfd-41cd-ae7b-d68d99580dec) CSS
+* ![image](https://github.com/user-attachments/assets/feb1047a-3ca5-45a2-b855-1033d8c66c44) Bootstrap
+* ![image](https://github.com/user-attachments/assets/97813c70-c13f-4a01-b0cc-e8eb0cf60852) Javascript
+
+*  ![image](https://github.com/user-attachments/assets/9928178c-c240-4c49-bf84-0682ff14c217) Python
+*  ![image](https://github.com/user-attachments/assets/8a651c78-d028-4c57-981d-00737266999f) Flask
+
+
+
+
+
+
+
+
 
 
 
@@ -38,10 +56,11 @@ This allows the software to mold to the user's needs, making it friendlier.
 
 Our algorithm is designed to dynamically update the background models, combining contour detection to trigger snapshots which are saved to drive into lightweight JPG formats. In future updates, eSpy plans to allow users to make a choice between video clips and snapshots when the algorithm is triggered.
 
+
 ## Getting Started
 
->[!TIP]
->To find the RTSP URL of your camera, we recommend using tools such as AgentDVR url Setup guide or consulting the manufacturer's manual or webpage. Our software DOES NOT offer similar tools of detecting cameras on your network.
+[!TIP]
+To find the RTSP URL of your camera, we recommend using tools such as AgentDVR url Setup guide or consulting the manufacturer's manual or webpage. Our software DOES NOT offer similar tools of detecting cameras on your network.
 
 
 
