@@ -40,8 +40,8 @@ Tech Stack:
   * Stream and Record: </b> Stream live video and record footage from multiple video sources. <b>
   * Web Interface: </b> Access and control streams through a web-based interface. <b>
   * Multi-Source Handling:</b> Manage streams from RTSP cameras, USB cameras, and webcams.<b>
-  * Configurable Settings:</b> Easily configure video sources and recording options.
-  * Persistent data:  <b> In upcoming updates, eSpy will allow users to save their camera sources to their accounts </b>  
+  * Configurable Settings:</b> Easily configure video sources and recording options. <b>
+  * Persistent data:  </b> In upcoming updates, eSpy will allow users to save their camera sources to their accounts 
 
    
 
