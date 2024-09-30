@@ -25,14 +25,6 @@ Tech Stack:
 
 
 
-
-
-
-
-
-
-
-
 ## Features
 
   <b>
@@ -59,11 +51,51 @@ This allows the software to mold to the user's needs, making it friendlier.
 
 Our algorithm is designed to dynamically update the background models, combining contour detection to trigger snapshots which are saved to drive into lightweight JPG formats. In future updates, eSpy plans to allow users to make a choice between video clips and snapshots when the algorithm is triggered.
 
+eSpy uses the Python open-source library OpenCV to process videos and images.
+
 
 ## Getting Started
 
-[!TIP]
-To find the RTSP URL of your camera, we recommend using tools such as AgentDVR url Setup guide or consulting the manufacturer's manual or webpage. Our software DOES NOT offer similar tools of detecting cameras on your network.
+>[!TIP]
+>To find the RTSP URL of your camera, we recommend using tools such as AgentDVR url Setup guide or consulting the manufacturer's manual or webpage. Our software DOES NOT offer similar tools of detecting cameras on your network.
 
+
+## Prerequisites
+
+Before you begin, ensure you have the following software installed:
+
+- **Python**: Version 3.6 or higher. You can download it from [python.org](https://www.python.org/downloads/).
+- **Pip**: Python's package installer, which usually comes with Python installations.
+
+## Cloning the Repository
+
+To download the code, open your terminal and run:
+
+```bash
+git https://github.com/Vukica-Brankovic/eSpy.git 
+```
+
+## Setting up the app
+
+Navigate to project directory
+
+```bash
+cd eSpy
+```
+Install the required packages using pip:
+
+```bash
+pip install -r requirements.txt
+```
+To run the Flask app, use the following command:
+
+
+```bash
+flask run
+```
+By default, your app will be accessible at http://127.0.0.1:5000/.
+
+>[!IMPORTANT]
+> This project is running on the development server. It's up for testing, not secure usage. We encourage users to report all bugs to the administrators. All contributions are welcome.
 
 
