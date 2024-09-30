@@ -2,6 +2,19 @@
   <img src="https://github.com/user-attachments/assets/c17e4160-06f9-40eb-acd6-e1ba23d15bbe"  />
 </p>
 
+## Table of Contents
+1. [Introduction](#espy)
+2. [Features](#features)
+3. [Settings](#settings)
+4. [Motion Detection](#motion-detection)
+5. [Getting Started](#getting-started)
+6. [Prerequisites](#prerequisites)
+7. [Cloning the Repository](#cloning-the-repository)
+8. [Setting up the App](#setting-up-the-app)
+9. [License](#license)
+10. [Contact](#contact)
+
+
 # eSpy
 
 eSpy is a light-weight streaming and recording web application that supports video capture from RTSP cameras, USB sources and webcameras. eSpy is developed with Python and Flask, with a front-end stack consisting of HTML, CSS and JavaScript. It is styled in a dark, modern and minimalistic theme, providing the users easy interface and navigation to manage and monitor live video streams.
@@ -98,10 +111,36 @@ By default, your app will be accessible at http://127.0.0.1:5000/.
 >[!IMPORTANT]
 > This project is running on the development server without warranty of any kind. The authors are not liable for any issues that arise from using the software. It's up for testing, not secure usage. We encourage users to report all bugs to the administrators. All contributions and tests are welcome and encourages.
 
+## Troubleshooting
 
-## License
+If you encounter issues during installation or while running the application, consider the following:
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- Ensure you have Python and Pip correctly installed.
+- Check for any typos in the command lines.
+- If you have any missing packages, try running `pip install -r requirements.txt` again.
+
+
+## Usage Examples
+
+### Streaming from a USB Camera
+
+1. Obtain the channel of your USB camera (eg. 0 if there is no webcam, 2, 4...)
+2. Navigate the menu and enter your channel into the form.
+3. Adjust the sensitivity settings as needed.
+4. Start streaming!
+
+### Recording Video
+
+To record a video, click on the 'Record'
+
+### Motion Detection
+
+To trigger the motion detector, click on your cameras More menu and navigate to the Motion Detection pop up. Start and enjoy!
+
+### Previewing the files
+
+Saved videos and images will be saved in the project's directory in the subdirectory <b> recordings </b>
+
 
 ## Contact
 
@@ -111,5 +150,12 @@ If you have any questions or would like to get in touch, feel free to reach out:
 - **GitHub**: [Vukica-Brankovic]([https://github.com/yourusername](https://github.com/Vukica-Brankovic))
 
 I welcome feedback and contributions!
+  
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
 
 
