@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/c17e4160-06f9-40eb-acd6-e1ba23d15bbe"  />
 </p>
 
-VIDEO DEMO: https://youtu.be/Q_lpwMlQHj8
+
 
 ## Table of Contents
 1. [Introduction](#espy)
@@ -18,6 +18,8 @@ VIDEO DEMO: https://youtu.be/Q_lpwMlQHj8
 
 
 # eSpy
+
+VIDEO DEMO: https://youtu.be/Q_lpwMlQHj8
 
 eSpy is a light-weight streaming and recording web application that supports video capture from RTSP cameras, USB sources and webcameras. eSpy is developed with Python and Flask, with a front-end stack consisting of HTML, CSS and JavaScript. It is styled in a dark, modern and minimalistic theme, providing the users easy interface and navigation to manage and monitor live video streams.
 
