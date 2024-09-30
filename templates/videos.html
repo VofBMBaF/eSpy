@@ -12,8 +12,8 @@
    
         <!-- List id is the camera number from the for loop-->
         <div class="contain" id="camera-{{camera_number}}">
-            <span class="rec-contain" id="rec-contain">
-            <span class="material-symbols-outlined" style="color: #e74c3c;" id="rec-icon">
+            <span class="rec-contain-{{camera_number}}" id="rec-contain-{{camera_number}}">
+            <span class="material-symbols-outlined" style="color: #e74c3c;" id="rec-icon-{{camera_number}}">
                 radio_button_checked
                 </span> REC
             </span>    
@@ -138,7 +138,8 @@ function startRecording(camera_id) {
         console.log('response.status: ', response.status);
         if (response.ok) {
 
-            document.getElementById("rec-contain").classList.add("displayRec");
+            recIcon = document.querySelector(`#rec-contain-${camera_id}`);
+            recIcon.classList.add("displayRec")
         }
     })
 
@@ -158,7 +159,8 @@ function stopRecording(camera_id) {
     .then (response => {
         console.log('response.status: ', response.status);
         if (response.ok) {
-            document.getElementById("rec-contain").classList.remove("displayRec");
+            recIcon = document.querySelector(`#rec-contain-${camera_id}`);
+            recIcon.classList.remove("displayRec")
         }
     })
         
