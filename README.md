@@ -96,6 +96,20 @@ flask run
 By default, your app will be accessible at http://127.0.0.1:5000/.
 
 >[!IMPORTANT]
-> This project is running on the development server. It's up for testing, not secure usage. We encourage users to report all bugs to the administrators. All contributions are welcome.
+> This project is running on the development server without warranty of any kind. The authors are not liable for any issues that arise from using the software. It's up for testing, not secure usage. We encourage users to report all bugs to the administrators. All contributions and tests are welcome and encourages.
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+If you have any questions or would like to get in touch, feel free to reach out:
+
+- **Email**: v.of.bmbaf@gmail.com
+- **GitHub**: [Vukica-Brankovic]([https://github.com/yourusername](https://github.com/Vukica-Brankovic))
+
+I welcome feedback and contributions!
 
 
