@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c17e4160-06f9-40eb-acd6-e1ba23d15bbe" />
+  <img src="https://github.com/user-attachments/assets/c17e4160-06f9-40eb-acd6-e1ba23d15bbe"  />
 </p>
 
 # eSpy
@@ -12,13 +12,14 @@ This project offers a glance at the start of a bigger software, with promises th
 
 Tech Stack:
 
-* ![image](https://github.com/user-attachments/assets/5be46c01-8d93-428a-b85d-9820d158ab60) HTML
-* ![image](https://github.com/user-attachments/assets/2a652c8c-1dfd-41cd-ae7b-d68d99580dec) CSS
-* ![image](https://github.com/user-attachments/assets/feb1047a-3ca5-45a2-b855-1033d8c66c44) Bootstrap
-* ![image](https://github.com/user-attachments/assets/97813c70-c13f-4a01-b0cc-e8eb0cf60852) Javascript
+* <img src="https://github.com/user-attachments/assets/5be46c01-8d93-428a-b85d-9820d158ab60" width = "20" /> HTML
+* <img src="https://github.com/user-attachments/assets/2a652c8c-1dfd-41cd-ae7b-d68d99580dec" width = "20" /> CSS
+* <img src="https://github.com/user-attachments/assets/feb1047a-3ca5-45a2-b855-1033d8c66c44" width = "20" /> Bootstrap
+* <img src="https://github.com/user-attachments/assets/97813c70-c13f-4a01-b0cc-e8eb0cf60852" width = "20" /> Javascript
 
-*  ![image](https://github.com/user-attachments/assets/9928178c-c240-4c49-bf84-0682ff14c217) Python
-*  ![image](https://github.com/user-attachments/assets/8a651c78-d028-4c57-981d-00737266999f) Flask
+*  <img src="https://github.com/user-attachments/assets/9928178c-c240-4c49-bf84-0682ff14c217" width = "20" /> Python
+*  <img src="https://github.com/user-attachments/assets/8a651c78-d028-4c57-981d-00737266999f" width = "20" /> Flask
+
 
 
 
