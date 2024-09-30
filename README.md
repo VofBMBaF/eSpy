@@ -11,6 +11,7 @@ It's designed to maintain speed even with larger number of video sources, and co
 This project offers a glance at the start of a bigger software, with promises that more features are on the way. This project was developed by Vukica Branković as the final project for Harvard's Computer Science course (cs50), combining technologies taught on the course and additional research on computer vision.
 
 Tech Stack:
+<b>
 
 * <img src="https://github.com/user-attachments/assets/5be46c01-8d93-428a-b85d-9820d158ab60" width = "20" /> HTML
 * <img src="https://github.com/user-attachments/assets/2a652c8c-1dfd-41cd-ae7b-d68d99580dec" width = "20" /> CSS
@@ -19,7 +20,7 @@ Tech Stack:
 
 *  <img src="https://github.com/user-attachments/assets/9928178c-c240-4c49-bf84-0682ff14c217" width = "20" /> Python
 *  <img src="https://github.com/user-attachments/assets/8a651c78-d028-4c57-981d-00737266999f" width = "20" /> Flask
-
+</b>
 
 
 
