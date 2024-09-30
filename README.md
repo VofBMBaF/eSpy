@@ -152,6 +152,22 @@ If you have any questions or would like to get in touch, feel free to reach out:
 I welcome feedback and contributions!
   
 
+## Roadmap
+
+- [ ] Implement persistent data storage
+- [ ] Add user authentication for personalized settings.
+- [ ] Implement secure error handling.
+- [ ] Expand the motion detection algorithm for more customizable options.
+
+## Acknowledgments
+
+- [OpenCV](https://opencv.org/)
+- [David Malan](https://cs.harvard.edu/malan/)
+- [AI Duck Debugger](https://cs50.ai/)
+
+
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
