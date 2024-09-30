@@ -3,6 +3,8 @@ from datetime import datetime
 import os
 import time
 from flask import Flask, render_template, Response, request, redirect, jsonify
+from wsgiref.simple_server import make_server
+
 
 
 app = Flask(__name__)
@@ -69,11 +71,11 @@ def gen(camera_id):
                         (x, y, w, h) = cv2.boundingRect(contour)
 
                         if not sensitivity.get(cam, False):
-                            if cv2.contourArea(contour) > 500:
+                            if cv2.contourArea(contour) < 500:
 
                                 continue
                         else: 
-                            if cv2.contourArea(contour) > int(sensitivity[cam]):       
+                            if cv2.contourArea(contour) < int(sensitivity[cam]):       
 
                                 continue
 
