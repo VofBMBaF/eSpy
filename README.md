@@ -25,7 +25,7 @@ eSpy is a light-weight streaming and recording web application that supports vid
 
 It's designed to maintain speed even with larger number of video sources, and comes with an inbuilt motion detection feature using a dynamic, adaptable background subtraction algorithm combined with contour detection which allows the user to adjust the sensitivity of their motion detector as needed depending on the surrounding.
 
-This project offers a glance at the start of a bigger software, with promises that more features are on the way. This project was developed by Vukica Branković as the final project for Harvard's Computer Science course (cs50), combining technologies taught on the course and additional research on computer vision.
+This project was developed by Vukica Branković as the final project for Harvard's Computer Science course (cs50), combining technologies taught on the course and additional research on computer vision.
 
 Tech Stack:
 <b>
@@ -135,7 +135,7 @@ If you encounter issues during installation or while running the application, co
 
 ### Recording Video
 
-To record a video, click on the 'Record'
+To record a video, click on the 'Record' button!
 
 ### Motion Detection
 
@@ -143,7 +143,7 @@ To trigger the motion detector, click on your cameras More menu and navigate to 
 
 ### Previewing the files
 
-Saved videos and images will be saved in the project's directory in the subdirectory <b> recordings </b>
+Saved videos and images will be saved in the project's subdirectory <b> recordings </b>
 
 
 ## Contact
